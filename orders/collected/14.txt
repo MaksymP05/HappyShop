@@ -1,0 +1,10 @@
+Order ID: 14 
+State: Collected
+OrderedDateTime: 2025-12-18 05:13:53 
+ProgressingDateTime: 2025-12-18 05:25:26
+CollectedDateTime: 2025-12-18 05:25:26
+Items:
+ 0002    DAB Radio          (2) £  59,98
+--------------------------------------------
+ Total                               £  59,98
+

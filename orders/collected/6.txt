@@ -1,0 +1,12 @@
+Order ID: 6 
+State: Collected
+OrderedDateTime: 2025-11-22 23:23:07 
+ProgressingDateTime: 2025-11-22 23:23:10
+CollectedDateTime: 2025-11-22 23:23:15
+Items:
+ 0001    40 inch TV         ( 5) £1345.00
+ 0004    Watch              ( 3) £  89.97
+ 0005    Digital Camera     ( 2) £ 179.98
+--------------------------------------------
+ Total                               £1614.95
+

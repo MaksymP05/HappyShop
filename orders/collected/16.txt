@@ -1,0 +1,10 @@
+Order ID: 16 
+State: Collected
+OrderedDateTime: 2025-12-18 05:43:13 
+ProgressingDateTime: 2025-12-21 06:12:58
+CollectedDateTime: 2025-12-21 06:12:59
+Items:
+ 0001    tv                 (5) £   5,00
+--------------------------------------------
+ Total                               £   5,00
+

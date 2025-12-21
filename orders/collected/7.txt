@@ -1,0 +1,15 @@
+Order ID: 7 
+State: Collected
+OrderedDateTime: 2025-11-22 23:27:33 
+ProgressingDateTime: 2025-11-22 23:27:35
+CollectedDateTime: 2025-11-22 23:27:36
+Items:
+ 0001    40 inch TV         (38) £10222.00
+ 0002    DAB Radio          (4) £ 119.96
+ 0003    Toaster            (3) £  59.97
+ 0004    Watch              (2) £  59.98
+ 0005    Digital Camera     (33) £2969.67
+ 0006    MP3 player         (1) £   7.99
+--------------------------------------------
+ Total                               £13439.57
+
