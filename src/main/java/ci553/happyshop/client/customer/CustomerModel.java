@@ -40,7 +40,7 @@ public class CustomerModel {
     private static final double MIN_PAYMENT = 5.00;
     private static final int MAX_QTY_PER_PRODUCT = 50;
 
-    // helper to remove repeated text
+    // helper to remove repeated text (used 3 times)
     private String formatProductInfo(Product p) {
         return String.format(
                 "Product_Id: %s\n%s,\nPrice: £%.2f\n%d units left.",
