@@ -194,7 +194,6 @@ public class CustomerView  {
 
     // now supports multiple search results & name searches
 
-
     public void update(String imageName, String searchResult, String trolley, String receipt) {
 
         //  if multi-search is detected, hide image & only show text
