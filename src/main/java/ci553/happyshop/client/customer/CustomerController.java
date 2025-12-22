@@ -14,7 +14,7 @@ public class CustomerController {
             case "Add to Trolley":
                 cusModel.addToTrolley();
                 break;
-            case "Add Multiple": // adding multiple items
+            case "Add Multiple": // adding multiple items to the trolley
                 cusModel.addToTrolley(cusModel.cusView.spQty.getValue());
                 break;
             case "Cancel":
