@@ -52,7 +52,7 @@ public class RemoveProductNotifier {
         taRemoveMsg.setPrefHeight(80);
         taRemoveMsg.setStyle(UIStyle.alertContentTextAreaStyle);
 
-        Label laCustomerAction = new Label(cutomerActionBuilder());
+        Label laCustomerAction = new Label(customerActionBuilder());
         laCustomerAction.setWrapText(true);
         laCustomerAction.setStyle(UIStyle.alertContentUserActionStyle);
 
@@ -79,7 +79,7 @@ public class RemoveProductNotifier {
         scene = new Scene(pane, WIDTH, HEIGHT);
     }
 
-    private String cutomerActionBuilder(){
+    private String customerActionBuilder(){
         StringBuilder actions = new StringBuilder(" \u26A1 You can now: \n");
         actions.append("\u2022 Checkout your trolley as it is \n");
         actions.append("\u2022 Re-add the removed products (up to the available quantity) \n");
