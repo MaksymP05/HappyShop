@@ -178,7 +178,7 @@ public class CustomerModel {
     void addToTrolley() {
         addToTrolley(1);
     }
-
+    // multiple products adding function
     public void addToTrolley(int quantity) {
 
         if (theProduct == null) {
