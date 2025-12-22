@@ -21,6 +21,7 @@ import java.util.Map;
 /**
  * CustomerModel with Flexible Search (ID or Name).
  */
+
 public class CustomerModel {
     public CustomerView cusView;
     public DatabaseRW databaseRW;
@@ -50,7 +51,7 @@ public class CustomerModel {
         );
     }
 
-    // unified search
+    // unified search (ID or name)
     void search() throws SQLException {
 
         String idInput = cusView.tfId.getText().trim();
