@@ -175,7 +175,7 @@ public class CustomerView  {
                 showTrolleyOrReceiptPage(vbTrolleyPage);
             }
 
-            // also show trolley after adding multiple items
+            // also shows trolley after adding multiple items
             if (action.equals("Add Multiple")) {
                 showTrolleyOrReceiptPage(vbTrolleyPage);
             }
