@@ -7,6 +7,7 @@ import ci553.happyshop.client.picker.PickerModel;
 import ci553.happyshop.storageAccess.OrderFileManager;
 import ci553.happyshop.utility.StorageLocation;
 
+import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -39,7 +40,6 @@ import java.util.stream.Stream;
  * <p>As the heart of the ordering system, OrderHub connects customers, pickers, and tracker,
  * managementing logic into a unified workflow.</p>
  */
-
 public class OrderHub  {
     private static OrderHub orderHub; //singleton instance
 
@@ -59,8 +59,10 @@ public class OrderHub  {
      *   but collected orders are shown for a limited time (10 seconds).
      * - PickerModels will be notified only of orders in the "ordered" or "progressing" states, filtering out collected orders.
      */
-    private ArrayList<OrderTracker> orderTrackerList = new ArrayList<>();
     private ArrayList<PickerModel> pickerModelList = new ArrayList<>();
+
+    // observer support
+    private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
 
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
@@ -69,7 +71,7 @@ public class OrderHub  {
     public static OrderHub getOrderHub() {
         if (orderHub == null)
             orderHub = new OrderHub();
-            return orderHub;
+        return orderHub;
     }
 
     //Creates a new order using the provided list of products.
@@ -78,7 +80,7 @@ public class OrderHub  {
         int orderId = OrderCounter.generateOrderId(); //get unique orderId
         String orderedDateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         //make an Order Object: id, Ordered_state, orderedDateTime, and productsList(trolley)
-        Order theOrder = new Order(orderId,OrderState.Ordered,orderedDateTime,trolley);
+        Order theOrder = new Order(orderId, OrderState.Ordered, orderedDateTime, trolley);
 
         //write order details to file for the orderId in orderedPath (ie. orders/ordered)
         String orderDetail = theOrder.orderDetails();
@@ -86,21 +88,19 @@ public class OrderHub  {
         OrderFileManager.createOrderFile(path, orderId, orderDetail);
 
         orderMap.put(orderId, theOrder.getState()); //add the order to orderMap,state is Ordered initially
-        notifyOrderTrackers(); //notify OrderTrackers
+        notifyOrderTrackers();
         notifyPickerModels();//notify pickers
-        
+
         return theOrder;
     }
 
-    //Registers an OrderTracker to receive updates about changes.
+    // registers OrderTracker as a PropertyChangeListener
     public void registerOrderTracker(OrderTracker orderTracker){
-        orderTrackerList.add(orderTracker);
+        pcs.addPropertyChangeListener("orderMap", orderTracker);
     }
-     //Notifies all registered observer_OrderTrackers to update and display the latest orderMap.
+
     public void notifyOrderTrackers(){
-        for(OrderTracker orderTracker : orderTrackerList){
-            orderTracker.setOrderMap(orderMap);
-        }
+        pcs.firePropertyChange("orderMap", null, new TreeMap<>(orderMap));
     }
 
     //Registers a PickerModel to receive updates about changes.
@@ -144,11 +144,13 @@ public class OrderHub  {
 
             //change orderState in order file and move the file to new state folder
             switch(newState){
-                case OrderState.Progressing:
-                    OrderFileManager.updateAndMoveOrderFile(orderId, newState,orderedPath,progressingPath);
+                case Ordered:
                     break;
-                case OrderState.Collected:
-                    OrderFileManager.updateAndMoveOrderFile(orderId, newState,progressingPath,collectedPath);
+                case Progressing:
+                    OrderFileManager.updateAndMoveOrderFile(orderId, newState, orderedPath, progressingPath);
+                    break;
+                case Collected:
+                    OrderFileManager.updateAndMoveOrderFile(orderId, newState, progressingPath, collectedPath);
                     removeCollectedOrder(orderId); //Scheduled removal
                     break;
             }
@@ -239,5 +241,4 @@ public class OrderHub  {
         }
         return orderIds;
     }
-
 }
