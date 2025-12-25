@@ -30,7 +30,7 @@ public final class UIStyle {
 
     public static final int customerWinWidth = 600;
     public static final int customerWinHeight = 300;
-    public static final int removeProNotifierWinWidth = customerWinWidth/2 +160;
+    public static final int removeProNotifierWinWidth = customerWinWidth / 2 + 160;
     public static final int removeProNotifierWinHeight = 230;
 
     public static final int pickerWinWidth = 310;
@@ -49,74 +49,78 @@ public final class UIStyle {
     public static final int EmergencyExitWinWidth = 200;
     public static final int EmergencyExitWinHeight = 300;
 
-    public static final String labelTitleStyle ="-fx-font-weight: bold; " +
-            "-fx-font-size: 16px; -fx-text-fill: purple;";
+    public static final String labelTitleStyle =
+            "-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #212529;";
 
-    public static final String labelStyle = "-fx-font-weight: bold; " +
-            "-fx-font-size: 14px; " +
-            "-fx-text-fill: black; " +
-            "-fx-background-color: lightblue;";
+    public static final String labelStyle =
+            "-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #343a40;";
 
-    public static final String comboBoxStyle ="-fx-font-weight: bold; " +
-            "-fx-font-size: 14px;";
+    public static final String comboBoxStyle =
+            "-fx-font-size: 14px; -fx-font-weight: bold;";
 
-    public static final String buttonStyle= "-fx-font-size: 15";
+    public static final String buttonStyle =
+            "-fx-font-size: 14px; -fx-font-weight: bold; -fx-background-color: #339af0; " +
+                    "-fx-text-fill: white; -fx-padding: 6 12; -fx-background-radius: 10px; -fx-border-radius: 10px;";
 
-    public static final String rootStyle = "-fx-padding: 8px; " +
-            "-fx-background-color: lightgreen";
+    public static final String rootStyle =
+            "-fx-padding: 12px; -fx-background-color: linear-gradient(to bottom, #f8f9fa, #e9ecef);";
 
-    public static final String rootStyleBlue = "-fx-padding: 8px; " +
-            "-fx-background-color: lightblue";
+    public static final String rootStyleBlue =
+            "-fx-padding: 12px; -fx-background-color: linear-gradient(to bottom, #e7f5ff, #d0ebff);";
 
-    public static final String rootStyleGray = "-fx-padding: 8px; " +
-            "-fx-background-color: lightgray";
+    public static final String rootStyleGray =
+            "-fx-padding: 12px; -fx-background-color: linear-gradient(to bottom, #f1f3f5, #e9ecef);";
 
-    public static final String rootStyleWarehouse = "-fx-padding: 8px; " +
-            "-fx-background-color: lightpink";
+    public static final String rootStyleWarehouse =
+            "-fx-padding: 12px; -fx-background-color: linear-gradient(to bottom, #fff0f6, #ffe3ec);";
 
-    public static final String rootStyleYellow = "-fx-padding: 8px; " +
-            "-fx-background-color: lightyellow";
+    public static final String rootStyleYellow =
+            "-fx-padding: 12px; -fx-background-color: linear-gradient(to bottom, #fff9db, #ffec99);";
 
-    public static final String textFiledStyle = "-fx-font-size: 16";
+    public static final String textFiledStyle =
+            "-fx-font-size: 14px; -fx-padding: 6px; -fx-background-color: white; -fx-border-color: #ced4da; " +
+                    "-fx-border-radius: 8px; -fx-background-radius: 8px;";
 
-    public static final String labelMulLineStyle= "-fx-font-size: 16px; " +
-            "-fx-background-color: lightpink";
+    public static final String labelMulLineStyle =
+            "-fx-font-size: 14px; -fx-text-fill: #212529; -fx-background-color: white; -fx-border-color: #dee2e6; " +
+                    "-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-padding: 8px;";
 
-    public static final String listViewStyle = "-fx-border-color: #ccc; " +
-            "-fx-border-width: 1px; -fx-background-color: white; -fx-font-size: 14px;";
+    public static final String listViewStyle =
+            "-fx-font-size: 14px; -fx-control-inner-background: white; -fx-border-color: #dee2e6; " +
+                    "-fx-border-radius: 8px; -fx-background-radius: 8px; -fx-padding: 8px;";
 
-    public static final String manageStockChildStyle = "-fx-background-color: lightgrey; " +
-            "-fx-border-color: lightgrey; " +
-            "-fx-border-width: 1px; " +
-            "-fx-padding: 5px;";
+    public static final String manageStockChildStyle =
+            "-fx-background-color: #f1f3f5; -fx-border-color: #dee2e6; -fx-border-width: 1px; -fx-padding: 5px;";
 
-    public static final String manageStockChildStyle1 = "-fx-background-color: lightyellow; " +
-            "-fx-border-color: lightyellow; " +
-            "-fx-border-width: 1px; " +
-            "-fx-padding: 5px;";
+    public static final String manageStockChildStyle1 =
+            "-fx-background-color: #fff9db; -fx-border-color: #ffe066; -fx-border-width: 1px; -fx-padding: 5px;";
 
-    public static final String greenFillBtnStyle = "-fx-background-color: green; " +
-            "-fx-text-fill: white; -fx-font-size: 14px;";
-    public static final String redFillBtnStyle ="-fx-background-color: red; " +
-            "-fx-text-fill: white; -fx-font-size: 14px; ";
+    public static final String greenFillBtnStyle =
+            "-fx-background-color: #37b24d; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; " +
+                    "-fx-background-radius: 10px; -fx-border-radius: 10px;";
 
-    public static final String grayFillBtnStyle = "-fx-background-color: gray; " +
-            "-fx-text-fill: white; -fx-font-size: 14px; ";
+    public static final String redFillBtnStyle =
+            "-fx-background-color: #f03e3e; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; " +
+                    "-fx-background-radius: 10px; -fx-border-radius: 10px;";
 
-    public static final String blueFillBtnStyle ="-fx-background-color: blue; " +
-            "-fx-text-fill: white; -fx-font-size: 14px;";
+    public static final String grayFillBtnStyle =
+            "-fx-background-color: #868e96; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; " +
+                    "-fx-background-radius: 10px; -fx-border-radius: 10px;";
 
-    public static final String alertBtnStyle ="-fx-background-color: green; " +
-            "-fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold;";
+    public static final String blueFillBtnStyle =
+            "-fx-background-color: #228be6; -fx-text-fill: white; -fx-font-size: 14px; -fx-font-weight: bold; " +
+                    "-fx-background-radius: 10px; -fx-border-radius: 10px;";
 
-    public static final String alertTitleLabelStyle = "-fx-font-size: 16px; " +
-            "-fx-font-weight: bold; " +
-            "-fx-text-fill: red; " + "-fx-background-color: lightblue;";
+    public static final String alertBtnStyle =
+            "-fx-background-color: #339af0; -fx-text-fill: white; -fx-font-size: 12px; -fx-font-weight: bold; " +
+                    "-fx-background-radius: 10px; -fx-border-radius: 10px;";
 
-    public static final String alertContentTextAreaStyle = "-fx-font-size: 14px;" +
-            "-fx-font-weight: normal;-fx-control-inner-background: lightyellow; -fx-text-fill: darkblue;";
+    public static final String alertTitleLabelStyle =
+            "-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #f03e3e; -fx-background-color: #e7f5ff;";
 
-    public static final String alertContentUserActionStyle = "-fx-font-size: 14px;" +
-            "-fx-font-weight: normal; -fx-text-fill: green;";
+    public static final String alertContentTextAreaStyle =
+            "-fx-font-size: 14px; -fx-control-inner-background: #fff9db; -fx-text-fill: #1c7ed6;";
 
+    public static final String alertContentUserActionStyle =
+            "-fx-font-size: 14px; -fx-text-fill: #37b24d;";
 }

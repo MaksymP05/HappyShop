@@ -24,8 +24,8 @@ import java.sql.SQLException;
 public class CustomerView  {
     public CustomerController cusController;
 
-    public javafx.scene.control.Spinner<Integer> spQty;
-    public javafx.scene.control.Button btnAddMultiple;
+    public Spinner<Integer> spQty;
+    public Button btnAddMultiple;
 
     private final int WIDTH = UIStyle.customerWinWidth;
     private final int HEIGHT = UIStyle.customerWinHeight;
@@ -50,9 +50,12 @@ public class CustomerView  {
         vbTrolleyPage = CreateTrolleyPage();
         vbReceiptPage = createReceiptPage();
 
+        vbSearchPage.setPrefWidth(COLUMN_WIDTH);
+        vbTrolleyPage.setPrefWidth(COLUMN_WIDTH);
+
         Line line = new Line(0, 0, 0, HEIGHT);
         line.setStrokeWidth(4);
-        line.setStroke(Color.PINK);
+        line.setStroke(Color.LIGHTGRAY);
 
         VBox lineContainer = new VBox(line);
         lineContainer.setPrefWidth(4);
@@ -74,8 +77,6 @@ public class CustomerView  {
         Label laPageTitle = new Label("Search by Product ID/Name");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
 
-        // dual input fields implemented
-
         Label laId = new Label("ID:");
         laId.setStyle(UIStyle.labelStyle);
         tfId = new TextField();
@@ -90,8 +91,6 @@ public class CustomerView  {
         tfName.setStyle(UIStyle.textFiledStyle);
         HBox hbName = new HBox(10, laName, tfName);
 
-        Label laPlaceHolder = new Label(" ".repeat(15));
-
         Button btnSearch = new Button("Search");
         btnSearch.setStyle(UIStyle.buttonStyle);
         btnSearch.setOnAction(this::buttonClicked);
@@ -100,18 +99,25 @@ public class CustomerView  {
         btnAddToTrolley.setStyle(UIStyle.buttonStyle);
         btnAddToTrolley.setOnAction(this::buttonClicked);
 
-        // quantity spinner + add multiple button
-
         spQty = new Spinner<>(1, 50, 1);
         spQty.setEditable(true);
         spQty.setPrefWidth(85);
+        spQty.setStyle(UIStyle.textFiledStyle);
+
+        Label laQty = new Label("Qty:");
+        laQty.setStyle(UIStyle.labelStyle);
 
         btnAddMultiple = new Button("Add Multiple");
         btnAddMultiple.setStyle(UIStyle.buttonStyle);
         btnAddMultiple.setOnAction(this::buttonClicked);
 
-        HBox hbBtns = new HBox(10, laPlaceHolder, btnSearch, btnAddToTrolley, spQty, btnAddMultiple);
-        hbBtns.setAlignment(Pos.CENTER_LEFT);
+        HBox hbRow1 = new HBox(10, btnSearch, btnAddToTrolley);
+        hbRow1.setAlignment(Pos.CENTER_LEFT);
+
+        HBox hbRow2 = new HBox(10, laQty, spQty, btnAddMultiple);
+        hbRow2.setAlignment(Pos.CENTER_LEFT);
+
+        VBox vbBtns = new VBox(10, hbRow1, hbRow2);
 
         ivProduct = new ImageView("imageHolder.jpg");
         ivProduct.setFitHeight(60);
@@ -126,7 +132,7 @@ public class CustomerView  {
         HBox hbSearchResult = new HBox(5, ivProduct, lbProductInfo);
         hbSearchResult.setAlignment(Pos.CENTER_LEFT);
 
-        return new VBox(15, laPageTitle, hbId, hbName, hbBtns, hbSearchResult);
+        return new VBox(15, laPageTitle, hbId, hbName, vbBtns, hbSearchResult);
     }
 
     private VBox CreateTrolleyPage() {
@@ -135,7 +141,9 @@ public class CustomerView  {
 
         taTrolley = new TextArea();
         taTrolley.setEditable(false);
-        taTrolley.setPrefSize(WIDTH/2, HEIGHT-50);
+        taTrolley.setPrefSize(WIDTH / 2, HEIGHT - 50);
+        taTrolley.setWrapText(true);
+        taTrolley.setStyle(UIStyle.listViewStyle);
 
         Button btnCancel = new Button("Cancel");
         btnCancel.setStyle(UIStyle.buttonStyle);
@@ -157,7 +165,9 @@ public class CustomerView  {
 
         taReceipt = new TextArea();
         taReceipt.setEditable(false);
-        taReceipt.setPrefSize(WIDTH/2, HEIGHT-50);
+        taReceipt.setPrefSize(WIDTH / 2, HEIGHT - 50);
+        taReceipt.setWrapText(true);
+        taReceipt.setStyle(UIStyle.listViewStyle);
 
         Button btnCloseReceipt = new Button("OK & Close");
         btnCloseReceipt.setStyle(UIStyle.buttonStyle);
@@ -175,7 +185,6 @@ public class CustomerView  {
                 showTrolleyOrReceiptPage(vbTrolleyPage);
             }
 
-            // also shows trolley after adding multiple items
             if (action.equals("Add Multiple")) {
                 showTrolleyOrReceiptPage(vbTrolleyPage);
             }
@@ -191,14 +200,10 @@ public class CustomerView  {
         }
     }
 
-
-    // now supports multiple search results & name searches
-
     public void update(String imageName, String searchResult, String trolley, String receipt) {
 
-        //  if multi-search is detected, hide image & only show text
         if (searchResult.startsWith("Search Results:")) {
-            ivProduct.setImage(new Image("imageHolder.jpg"));   // Clear image
+            ivProduct.setImage(new Image("imageHolder.jpg"));
         } else {
             ivProduct.setImage(new Image(imageName));
         }
